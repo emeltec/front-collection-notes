@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="select-autocomplete">
+    <input #searchInput id="searchInput" 
+      class="form-control" type="text"
+      autocomplete="off"
+    />
+    <div class="wrapper-panel" id="wrapper">
+      <div class="panel">
+        <div #listContent id="listContent" class="list-content" (scroll)="onScroll($event)">
+          @for (item of collections; track $index) {
+          <div class="container-option" (click)="selectItem(item)">
+            <div class="option" [ngClass]="{'text-danger': item.quantity <= 0}">
+              {{ item.product_code}} - {{ item.description }} (stock: {{ item?.quantity }})
+            </div>
+          </div>
+          }
+          @empty {
+          <span>Sin resultados</span>
+          }
+        </div>
+      </div>
+    </div>
+    <div class="label-message" [ngClass]="{'error': stateSearch == 'error'}">
+      {{ messageSearch }}
+    </div>
+  </div>
+
+  <table class="table table-products">
+    <thead>
+      <tr>
+        <th scope="col">Código</th>
+        <th scope="col" style="width:370px">Descripción</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Subtotal</th>
+        <th scope="col">Total</th>
+        <th scope="col">&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of collectionTemp; track $index) {
+        <tr>
+          <th scope="row">{{item.product_code}}</th>
+          <td>{{item.description}}
+            <span class="badge text-bg-warning">stock: {{item.quantity}}</span>
+          </td>
+          <td>
+            <input type="number" [value]="item.cantidad" [min]="1" (change)="quantityChange($event.target, item, $index)">
+          </td>
+          <td>
+            <input type="text" [value]="item.sale_price" (change)="priceChange($event.target, item, $index)">
+          </td>
+          <td>{{item.subtotal}}</td>
+          <td>{{item.total}}</td>
+          <td class="action"><i (click)="deleteItem($index)" class="bx bxs-trash text-danger"></i></td>
+        </tr>
+      }
+      
+    </tbody>
+  </table>
+
+  @if (collectionTemp.length > 0) {
+    <ng-container>
+      <div class="bill-footer">
+        <table class="table table-bordered table-summary">
+          <tr>
+            <td class="label">Sub Total:</td>
+            <td class="amount"> {{ totalSinIGV }}</td>
+          </tr>
+          <tr>
+            <td class="label">Impuesto (IGV):</td>
+            <td class="amount"> {{ totalTax }}</td>
+          </tr>
+          <tr>
+            <td class="label">Total a Pagar:</td>
+            <td class="amount"> {{ totalGlobal }}</td>
+          </tr>
+        </table>
+        <div class="buttons-summary">
+          <button class="btn btn-success">Registrar venta</button>
+        </div>
+      </div>
+    </ng-container>
+  }
+
+</div>

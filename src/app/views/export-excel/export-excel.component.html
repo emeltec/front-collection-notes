@@ -1,0 +1,25 @@
+
+
+<button class="btn btn-warning" (click)="exportExel()">Exportar excel</button>
+
+<table class="table table-striped mt-4">
+  <thead>
+    <tr>
+      @for (item of headers; track $index) {
+        <th>{{item}}</th>
+      }
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of products; track $index) {
+      <tr>
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.brand}}</td>
+        <td>{{item.price}}</td>
+        <td>{{item.quantity}}</td>
+      </tr>
+    }
+  </tbody>
+</table>

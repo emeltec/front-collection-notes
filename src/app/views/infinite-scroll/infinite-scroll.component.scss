@@ -1,0 +1,114 @@
+.wrapper-panel {
+  display: block;
+  background: #ffffff;
+  min-height: 30px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  box-shadow: 0 5px 10px rgb(200 200 200);
+  border-radius: 0 0 5px 5px;
+}
+
+.select-autocomplete {
+  position: relative;
+}
+
+.list-content {
+  max-height: 150px;
+  //background: #c2beb6;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.container-option {
+  line-height: 1.7rem;
+}
+
+.wrapper-panel {
+  display: none;
+}
+
+.wrapper-panel.show {
+  display: block;
+  position: absolute;
+  width: 100%;
+}
+
+.option {
+  cursor: pointer;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.option:hover {
+  background: #ddd;
+}
+
+.search {
+  width: 100%;
+}
+
+.label-message {
+  font-size: 0.9rem;
+  color: gray;
+}
+
+.label-message.error {
+  color: orangered;
+}
+
+.table td input {
+  width: 60px;
+}
+
+.table td.action i {
+  cursor: pointer;
+  padding: 4px;
+}
+
+.bill-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.table-products {
+  margin-top: 15px;
+}
+
+.price-summary {
+  text-align: end;
+}
+
+.price-summary {
+  padding-bottom: 15px;
+
+  & div {
+    font-weight: bold;
+  }
+}
+
+.table-summary {
+  min-width: 200px;
+  max-width: 280px;
+
+  & td.label {
+    text-align: right;
+  }
+
+  & td.amount {
+    text-align: right;
+    font-weight: bold;
+  }
+}
+
+.buttons-summary {
+  min-width: 200px;
+  max-width: 280px;
+}
+
+.buttons-summary .btn {
+  width: 100%;
+  text-transform: uppercase;
+}
