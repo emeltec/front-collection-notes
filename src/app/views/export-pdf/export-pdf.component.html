@@ -1,2 +1,14 @@
+<button class="btn btn-warning d-none" (click)="exportPDF()">Exportar PDF</button>
 
-<button (click)="generatePDF()">Exportar PDF</button>
+
+<section class="row export-pdf mt-3">
+  <div class="col-9">
+    <app-detail-card [detailsCard]="detailsCard"></app-detail-card>
+  </div>
+
+  <div class="col-3 text-center">
+    <div>
+      <button class="btn btn-warning" (click)="exportPDF()">Exportar PDF</button>
+    </div>
+  </div>
+</section>

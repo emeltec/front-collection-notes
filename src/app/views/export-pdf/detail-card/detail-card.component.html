@@ -33,11 +33,10 @@
   
               <div class="status-indicator" [ngClass]="'success-indicator'" *ngIf="f.indicator"></div>
   
-              <span *ngIf="!f.title && !f.link && f.textType">
-                {{ f.value }}
+              <span *ngIf="!f.title && !f.link && f.textType">{{ f.value }}
               </span>
   
-              <span *ngIf="f.helperText"><br>
+              <span class="helper-text" *ngIf="f.helperText"><br>
                 {{ f.helperText }}
               </span>
             </ng-template>
