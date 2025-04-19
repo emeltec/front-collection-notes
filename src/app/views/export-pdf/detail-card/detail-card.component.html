@@ -1,0 +1,50 @@
+
+<div class="card-content">
+  <div class="card-body">
+    <div *ngFor="let i of detailsCard; let sectionId = index">
+      <div class="section d-flex align-items-center mb-2">
+        <div class="bullet"></div>
+        <span> {{ i.section }} </span>
+      </div>
+  
+      <table class="detail-table"
+        [ngClass]="{ 'mb-5': sectionId + 1 !== detailsCard.length }">
+        <th scope="row"></th>
+        <tr *ngFor="let f of i.dataDetails; let tableId = index">
+          <td>
+            <p [ngClass]="{ 'd-print-none': f.link }">
+              {{ f.key }}
+            </p>
+          </td>
+  
+          <td>
+            <ng-container *ngIf="f.status; else dataText">
+              <div class="d-flex align-items-center">
+                <span>
+                  {{ f.value }}
+                </span>
+              </div>
+            </ng-container>
+  
+            <ng-template #dataText>
+              <span *ngIf="f.title && !f.link">
+                {{ f.value }}
+              </span>
+  
+              <div class="status-indicator" [ngClass]="'success-indicator'" *ngIf="f.indicator"></div>
+  
+              <span *ngIf="!f.title && !f.link && f.textType">
+                {{ f.value }}
+              </span>
+  
+              <span *ngIf="f.helperText"><br>
+                {{ f.helperText }}
+              </span>
+            </ng-template>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>
