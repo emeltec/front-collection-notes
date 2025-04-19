@@ -15,13 +15,17 @@
           <i class='bx bx-grid-alt nav_icon'></i>
           <span class="nav_name">Dashboard</span>
         </a>
-        <a routerLink="/excel" class="nav_link">
+        <a routerLink="/export-excel" class="nav_link">
           <i class='bx bx-user nav_icon'></i>
           <span class="nav_name">Export excel</span>
         </a>
+        <a routerLink="/export-pdf" class="nav_link">
+          <i class='bx bx-user nav_icon'></i>
+          <span class="nav_name">Export PDF</span>
+        </a>
         <a routerLink="/infinite-scroll" class="nav_link">
           <i class='bx bx-message-square-detail nav_icon'></i>
-          <span class="nav_name">Infinite</span>
+          <span class="nav_name">Infinite scroll</span>
         </a>
         <a routerLink="#" class="nav_link">
           <i class='bx bx-bookmark nav_icon'></i>
@@ -42,12 +46,10 @@
 </div>
 
 <!--Container Main start-->
-<div class="height-100 bg-light">
-  <h4>Main Components</h4>
+<div class="container py-4 height-100">
+  
   <router-outlet />
 
-  <!-- <input type="text" class="form-control" value="hola">
-  <button type="button" class="btn btn-success">Send</button> -->
 </div>
 
 

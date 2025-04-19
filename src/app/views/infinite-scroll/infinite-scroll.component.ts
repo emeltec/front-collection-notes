@@ -60,11 +60,11 @@ export class InfiniteScrollComponent {
       this.queryTerm = newValue;
       this.currentPage = 1;
       this.collections = [];
-      this.loadData();
+      this.getProducts();
     }
   }
 
-  loadData(): void {
+  getProducts(): void {
     if (this.queryTerm.trim() === '' || this.queryTerm.length < 2) {
       this.collections = [];
       return;
@@ -76,8 +76,7 @@ export class InfiniteScrollComponent {
 
     this.isLoading = true;
 
-    this.apiService
-      .searchProducts(this.queryTerm, this.currentPage, this.limitPage)
+    this.apiService.searchProducts(this.queryTerm, this.currentPage, this.limitPage)
       .subscribe({
         next: (data: IProductResponse) => {
           this.metaData = data.metadata;
@@ -86,7 +85,7 @@ export class InfiniteScrollComponent {
           this.isLoading = false;
         },
         error: (error) => {
-          console.error('Error en la API:', error);
+          console.error('Error service:', error);
           this.isLoading = false;
         },
       });
@@ -111,16 +110,16 @@ export class InfiniteScrollComponent {
     return product;
   }
 
-  onScroll(event: Event): void {
-    const target = event.target as HTMLElement;
-    const clientHeight = target.clientHeight;
-    const scrollHeight = target.scrollHeight;
-    const scrollTop = target.scrollTop;
+  onScrollEvent(event: Event): void {
+    const element = event.target as HTMLElement;
+    const clientHeight = element.clientHeight;
+    const scrollHeight = element.scrollHeight;
+    const scrollTop = element.scrollTop;
 
-    const needScroll = scrollHeight - clientHeight;
-    if (scrollTop > needScroll - 20 && this.currentPage <= this.metaData.totalPages && !this.isLoading) {
+    const differenceScroll = scrollHeight - clientHeight;
+    if (scrollTop > (differenceScroll - 20) && this.currentPage <= this.metaData.totalPages && !this.isLoading) {
       console.log('Cargando más datos...');
-      this.loadData();
+      this.getProducts();
     }
   }
 

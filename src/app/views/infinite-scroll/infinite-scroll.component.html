@@ -6,7 +6,7 @@
     />
     <div class="wrapper-panel" id="wrapper">
       <div class="panel">
-        <div #listContent id="listContent" class="list-content" (scroll)="onScroll($event)">
+        <div #listContent id="listContent" class="list-content" (scroll)="onScrollEvent($event)">
           @for (item of collections; track $index) {
           <div class="container-option" (click)="selectItem(item)">
             <div class="option" [ngClass]="item.quantity <= 0 ? 'text-danger': ''">
@@ -15,7 +15,7 @@
           </div>
           }
           @empty {
-          <span>Sin resultados</span>
+          <div class="option">Lista resultados vacio</div>
           }
         </div>
       </div>
@@ -77,7 +77,7 @@
           </tr>
         </table>
         <div class="buttons-summary">
-          <button class="btn btn-success">Registrar venta</button>
+          <button class="btn btn-success">Registrar pedido</button>
         </div>
       </div>
     </ng-container>

@@ -93,6 +93,11 @@
   min-width: 200px;
   max-width: 280px;
 
+  & td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
   & td.label {
     text-align: right;
   }
